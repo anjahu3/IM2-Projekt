@@ -1,0 +1,48 @@
+
+
+body {
+font-family: Neue Haas Grotesk Display Pro,;
+background: linear-gradient(180deg, #FF7937 3%, #FFC937 91%);
+min-height: 16001px;
+}
+
+
+.hero   {
+text-align: center;
+padding-top:30px;
+}
+
+h1 {
+font-size: 115px;
+line-height: 0.9;
+letter-spacing: -2px;
+color:black;
+margin-bottom: 20px;
+}
+
+.intro {
+    font-size: 72px;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.city-buttons {
+    border:none;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom:28px;
+    color: F0DDCA;
+}
+
+.city-buttons button {
+   border: 1px solid black;
+   border-radius: 999px;
+   padding: 8px 16px;
+   background-color: F0DDCA;
+}
+
+
+
