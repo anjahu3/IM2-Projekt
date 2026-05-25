@@ -1,48 +1,185 @@
 
-
+/* Allgmeines Layout */
 body {
-font-family: Neue Haas Grotesk Display Pro,;
+font-family: "Neue Haas Grotesk Display Pro",;
 background: linear-gradient(180deg, #FF7937 3%, #FFC937 91%);
-min-height: 16001px;
+min-height: 100vh;
+margin: 0;
 }
 
-
-.hero   {
-text-align: center;
-padding-top:30px;
-}
-
+/* Titel - Run with the Sun */
 h1 {
-font-size: 115px;
+font-size: 70px;
 line-height: 0.9;
 letter-spacing: -2px;
 color:black;
 margin-bottom: 20px;
+text-transform: uppercase;
+text-align: center;
+margin-top: 140px;
 }
 
+
+
+/* Text Intro */
 .intro {
-    font-size: 72px;
+    font-size: 40px;
     line-height: 0.9;
-    letter-spacing: -2px;
     color: black;
-    margin-bottom: 20px;
+    margin-bottom: 90px;
+    margin-top: 40px;
+    text-align: center;
 }
 
+/* Städte Buttons */
 .city-buttons {
     border:none;
     display:grid;
     grid-template-columns:repeat(3, 1fr);
     gap: 12px;
     margin-bottom:28px;
-    color: F0DDCA;
+    padding: 8px 10px;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 .city-buttons button {
    border: 1px solid black;
    border-radius: 999px;
    padding: 8px 16px;
-   background-color: F0DDCA;
+   background-color: #F0DDCA;
 }
 
+/* Städte Card */
+.city-card {
+  width: 500px;
+  margin: 0 auto 90px;
+  border-radius: 24px;
+  padding: 24px;
+  transition: 0.4s ease;
+}
+
+/* Helle City-Card */
+.day-card {
+  background-color: #F0DDCA;
+  color: #000000;
+}
+
+/* Dunkle City-Card */
+.night-card {
+  background-color: #B95F36;
+  color: #ffffff;
+}
+
+/* Stadtname */
+.city-card h2 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+/* Aktuelle Uhrzeit */
+#current-time {
+  font-size: 12px;
+  margin-bottom: 28px;
+}
+
+/* Ganze Daten-Spalte */
+.sun-data {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* Einzelne Reihe */
+.data-row {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Icons */
+.data-row img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Texte */
+.data-row span {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.data-row strong {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+/* Info Button */
+.info-button {
+  margin-left: auto;
+  margin-top: 15px;
+
+  border: none;
+  border-radius: 900px;
+  padding: 10px 18px;
+
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Dunkler Info-Button */
+.day-card .info-button {
+  background-color: #8C4A2F;
+  color: white;
+}
+
+/* Heller Info-Button */
+.night-card .info-button {
+  background-color: #F0DDCA;
+  color: #8C4A2F;
+}
+
+/* Der aktuelle Sonnenstand Text */
+
+.sun-position-text {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.sun-position-text h2 {
+  font-size: 22px;
+  margin-bottom: 50px;
+}
+
+/* Gebogene Linie */
+.sun-curve {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  border-top: 2px solid black;
+  border-radius: 50% 50% 0 0;
+}
+
+/* Sonne oder Mond */
+.moving-sun {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  top: -28px;
+
+  /* Position auf der Kurve */
+  left: 75%;
+  transform: translateX(-50%);
+}
+
+/* Bild/Icon */
+.moving-sun img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
 

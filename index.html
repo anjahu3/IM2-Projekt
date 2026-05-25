@@ -15,7 +15,7 @@
     </header>
 
     <main>
-      <p class="intro">Klicke auf eine Stadt und entdecke ihren Sonnenaufgang und Sonnenuntergang</p>
+      <p class="intro">Klicke auf eine Stadt und entdecke ihren Sonnenaufgang und Sonnenuntergang.</p>
         <section class="city-buttons">
           <button>New York</button>
           <button>Tokio</button>
@@ -27,42 +27,48 @@
 
 <!-- Städte Card-->
 
-    <section class="card-city">
+  <section class="city-card day-card">
       <h2 id="city-name">New York</h2>
       <p id="current-time">Aktuell ist es in New York 23:00 Uhr</p>
 
-        <div class="sun-daten">
-        <div class="sun-daten-einzeln">
-          <img src="Hier kommt ein Bild" alt="Sonnenaufgang-hell">
+        <div class="sun-data">
+        <div class="data-row">
+          <img src="Bilder/Sonnenaufgang_dunkel.png" alt="Sonnenaufgang-hell">
           <span> Sunrise</span>
-          <strong id="sunrise-time"> 7:00 AM</strong>
+          <span id="sunrise-time"> 7:00 AM</span>
         </div>
         
-      <div class="sun-daten-einzeln">
-        <img src="Hier kommt ein Bild" alt="Sonne">
+      <div class="data-row">
+        <img src="Bilder/Sonne_dunkel.png" alt="Sonne">
         <span> Solar Noon</span>
-        <strong id="solar-noon-time"> 12:00 AM </strong>
+        <span id="solar-noon-time"> 12:00 AM </span>
       </div>
 
-      <div class="sun-daten-einzeln">
-        <img src="Hier kommt ein Bild" alt="Sonnenuntergang-dunkel">
+      <div class="data-row">
+        <img src="Bilder/Sonnenuntergang_dunkel.png" alt="Sonnenuntergang-dunkel">
         <span> Sunset</span>
-        <strong id="sunset-time"> 7:00 PM </strong>
+        <span id="sunset-time"> 7:00 PM </spang>
       </div>
 
+<!-- Info Button auf City Card-->
     <button class="info-button"> weitere Infos</button>
     </section>
 
+
 <!-- Zweiter Teil mit Sonnenstrahl-->
 
-<section 
-      class="sun-position-text">
-      <h2> Der aktuelle Sonnenstand in New York</h2>
-<div class="sun-position">
+<section class="sun-position-text">
 
-</div class="sun-curve">
-<div class="moving-sun" id=""moving-sun"></div>
-</div>
+  <h2>Der aktuelle Sonnenstand in New York</h2>
+
+  <div class="sun-curve">
+
+    <div class="moving-sun" id="moving-sun">
+      <img src="Bilder/Mond_dunkel.png" alt="Mond">
+    </div>
+
+  </div>
+
 </section>
 
     </main>
