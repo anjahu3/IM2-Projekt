@@ -19,8 +19,6 @@ text-align: center;
 margin-top: 140px;
 }
 
-
-
 /* Text Intro */
 .intro {
     font-size: 40px;
@@ -36,11 +34,12 @@ margin-top: 140px;
     border:none;
     display:grid;
     grid-template-columns:repeat(3, 1fr);
-    gap: 12px;
+    gap: 14px 18px;
     margin-bottom:28px;
     padding: 8px 10px;
     font-size: 14px;
     cursor: pointer;
+    justify-content: center;
 }
 
 .city-buttons button {
@@ -74,14 +73,13 @@ margin-top: 140px;
 /* Stadtname */
 .city-card h2 {
   font-size: 32px;
-  font-weight: 400;
-  margin-bottom: 4px;
+  font-weight: 700;
+
 }
 
 /* Aktuelle Uhrzeit */
 #current-time {
-  font-size: 12px;
-  margin-bottom: 28px;
+  font-size: 25px;
 }
 
 /* Ganze Daten-Spalte */
@@ -146,11 +144,12 @@ margin-top: 140px;
 .sun-position-text {
   text-align: center;
   margin-top: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
+
 }
 
 .sun-position-text h2 {
-  font-size: 22px;
+  font-size: 30px;
   margin-bottom: 50px;
 }
 
@@ -158,7 +157,7 @@ margin-top: 140px;
 .sun-curve {
   position: relative;
   width: 100%;
-  height: 120px;
+  height: 130px;
   border-top: 2px solid black;
   border-radius: 50% 50% 0 0;
 }
@@ -175,10 +174,10 @@ margin-top: 140px;
   transform: translateX(-50%);
 }
 
-/* Bild/Icon */
+/* Icon (Mond und Sonne) auf Strahl */
 .moving-sun img {
   width: 100%;
-  height: 100%;
+  height: 130%;
   object-fit: contain;
 }
 
