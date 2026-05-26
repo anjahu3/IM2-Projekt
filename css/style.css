@@ -58,6 +58,10 @@ margin-top: 140px;
   transition: 0.4s ease;
 }
 
+#city-container {
+    display: none;
+}
+
 /* Helle City-Card */
 .day-card {
   background-color: #F0DDCA;
