@@ -7,6 +7,24 @@ min-height: 100vh;
 margin: 0;
 }
 
+/* Lottie-Animation */
+.lottie-container {
+  position: absolute;
+  top: -370px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 900px;
+  pointer-events: none;
+}
+
+.lottie-container dotlottie-wc {
+  width: 100%;
+  height: 100%;
+}
+
+
+
 /* Titel - Run with the Sun */
 h1 {
 font-size: 70px;
@@ -38,7 +56,6 @@ margin-top: 140px;
     margin-bottom:28px;
     padding: 8px 10px;
     font-size: 14px;
-    cursor: pointer;
     justify-content: center;
 }
 
