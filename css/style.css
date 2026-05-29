@@ -23,11 +23,9 @@ margin: 0;
   height: 100%;
 }
 
-
-
 /* Titel - Run with the Sun */
 h1 {
-font-size: 70px;
+font-size: 80px;
 line-height: 0.9;
 letter-spacing: -2px;
 color:black;
@@ -161,6 +159,10 @@ margin-top: 140px;
 }
 
 /* Der aktuelle Sonnenstand Text */
+
+#sun-position-container {
+    display:none
+}
 
 .sun-position-text {
   text-align: center;

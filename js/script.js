@@ -47,13 +47,26 @@ const sunsetTime = document.getElementById("sunset-time");
 const card = document.querySelector(".city-card");
 const movingSun = document.getElementById("moving-sun");
 const citycontainer = document.getElementById("city-container");
+const infoButton = document.querySelector(".info-button");
+const sunPositionContainer = document.getElementById("sun-position-container");
 
  // Auf Button klicken
 
 buttons.forEach(button => {
   button.addEventListener("click", () => {
     const city = button.textContent;
+    sunPositionContainer.style.display = "none";
     loadCityData(city);
+  });
+});
+
+ // Auf Button - weiter Infos auf City Card klicken
+
+infoButton.addEventListener("click", () => {
+
+  sunPositionContainer.style.display = "block";
+  sunPositionContainer.scrollIntoView({
+    behavior: "smooth"
   });
 });
 
