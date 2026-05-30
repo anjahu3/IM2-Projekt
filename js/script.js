@@ -49,6 +49,7 @@ const movingSun = document.getElementById("moving-sun");
 const citycontainer = document.getElementById("city-container");
 const infoButton = document.querySelector(".info-button");
 const sunPositionContainer = document.getElementById("sun-position-container");
+const sunCity = document.getElementById("sun-city");
 
  // Auf Button klicken
 
@@ -81,6 +82,8 @@ async function loadCityData(city) {
   const data = await response.json();
   const results = data.results;
   cityName.textContent = city;
+  updateCardStyle(cityData.timezone);
+  sunCity.textContent = city;
   currentTime.textContent =
     `Aktuell ist es in ${city} ${formatTime(new Date(), cityData.timezone)} Uhr`;
 
@@ -98,3 +101,42 @@ function formatTime(time, timezone) {
     timeZone: timezone
   });
 }
+
+// Helle oder Dunkle City Card je nach Tageszeit
+//   07:00–16:59 = helle Karte
+//  17:00–06:59 = dunkle Karte
+
+function updateCardStyle(timezone) {
+  const cityTime = new Date().toLocaleString("en-US", {
+    timeZone: timezone
+  });
+
+  const cityDate = new Date(cityTime);
+  const hour = cityDate.getHours();
+
+  console.log("Stunde in Stadt:", hour);
+
+  if (hour >= 7 && hour < 17) {
+    card.classList.remove("night-card");
+    card.classList.add("day-card");
+   sunriseIcon.src = "Bilder/Sonnenaufgang_dunkel.png";
+  solarNoonIcon.src = "Bilder/Sonne_dunkel.png";
+  sunsetIcon.src = "Bilder/Sonnenuntergang_dunkel.png";
+
+  } else {
+    card.classList.remove("day-card");
+    card.classList.add("night-card");
+        sunriseIcon.src = "Bilder/Sonnenaufgang_hell.png";
+        solarNoonIcon.src = "Bilder/Sonne_hell.png";
+        sunsetIcon.src = "Bilder/Sonnenuntergang_hell.png";
+  }
+}
+
+
+
+
+//Bilder/ Symbole der Sonnen holen
+
+const sunriseIcon = document.getElementById("sunrise-icon");
+const solarNoonIcon = document.getElementById("solarnoon-icon");
+const sunsetIcon = document.getElementById("sunset-icon");
