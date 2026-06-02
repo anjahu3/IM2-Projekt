@@ -50,12 +50,13 @@ const citycontainer = document.getElementById("city-container");
 const infoButton = document.querySelector(".info-button");
 const sunPositionContainer = document.getElementById("sun-position-container");
 const sunCity = document.getElementById("sun-city");
+const sunPositionIcon = document.getElementById("sun-position-icon");
 
  // Auf Button klicken
 
 buttons.forEach(button => {
   button.addEventListener("click", () => {
-    const city = button.textContent;
+    const city = button.textContent.trim();
     sunPositionContainer.style.display = "none";
     loadCityData(city);
   });
@@ -83,6 +84,7 @@ async function loadCityData(city) {
   const results = data.results;
   cityName.textContent = city;
   updateCardStyle(cityData.timezone);
+  updateSunPosition(results, cityData.timezone);
   sunCity.textContent = city;
   currentTime.textContent =
     `Aktuell ist es in ${city} ${formatTime(new Date(), cityData.timezone)} Uhr`;
@@ -100,6 +102,31 @@ function formatTime(time, timezone) {
     minute: "2-digit",
     timeZone: timezone
   });
+}
+
+//Sonneenstand oder Monst anzeigen und Position der Sonne berechnen
+
+function updateSunPosition(results, timezone) {
+  const cityTime = new Date().toLocaleString("en-US", {
+    timeZone: timezone
+  });
+
+  const cityDate = new Date(cityTime);
+  const hour = cityDate.getHours();
+
+  if (hour >= 7 && hour < 17) {
+    // Sonne anzeigen
+    sunPositionIcon.src = "Bilder/Sonne_dunkel.png";
+    sunPositionIcon.alt = "Sonne";
+  } else {
+    // Mond anzeigen
+    sunPositionIcon.src = "Bilder/Mond_dunkel.png";
+    sunPositionIcon.alt = "Mond";
+  }
+
+  // feste Position auf dem Strahl
+  movingSun.style.left = "75%";
+  movingSun.style.top = "-28px";
 }
 
 // Helle oder Dunkle City Card je nach Tageszeit
@@ -131,9 +158,6 @@ function updateCardStyle(timezone) {
         sunsetIcon.src = "Bilder/Sonnenuntergang_hell.png";
   }
 }
-
-
-
 
 //Bilder/ Symbole der Sonnen holen
 

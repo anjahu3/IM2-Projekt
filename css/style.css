@@ -32,7 +32,7 @@ color:black;
 margin-bottom: 20px;
 text-transform: uppercase;
 text-align: center;
-margin-top: 140px;
+margin-top: 170px;
 }
 
 /* Text Intro */
@@ -44,6 +44,30 @@ margin-top: 140px;
     margin-top: 40px;
     text-align: center;
 }
+
+/* Weltkarte im Hintergrund */
+
+header {
+
+  overflow: hidden;
+  min-height: 400;
+}
+
+.world-map {
+  position: absolute;
+
+    top: -140px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 90%;
+  opacity: 0.08;
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
 
 /* Städte Buttons */
 .city-buttons {

@@ -6,16 +6,24 @@
     <title>Run with the Sun</title>
     <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Hier kommt Lottie-Animation-->
   </head>
 
   <body>
     <header>
  
+     <!-- Lottie-Animation-->
+      
   <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.14/dist/dotlottie-wc.js" type="module"></script>
      <div class="lottie-container">
     <dotlottie-wc src="./Animation Start.json" autoplay loop></dotlottie-wc>
     </div>
+
+  <!-- Weltkarte Hintergrund -->
+  <img
+    src="Bilder/Weltkarte2.png"
+    alt=""
+    class="world-map"
+  >
 
     <h1>
     Run with
@@ -78,7 +86,7 @@
   <div class="sun-curve">
 
     <div class="moving-sun" id="moving-sun">
-      <img src="Bilder/Mond_dunkel.png" alt="Mond">
+      <img id="sun-position-icon" src="Bilder/Mond_dunkel.png" alt="Mond">
     </div>
 
   </div>
