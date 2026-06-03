@@ -51,6 +51,7 @@ const infoButton = document.querySelector(".info-button");
 const sunPositionContainer = document.getElementById("sun-position-container");
 const sunCity = document.getElementById("sun-city");
 const sunPositionIcon = document.getElementById("sun-position-icon");
+const sunTitle = document.getElementById("sun-title");
 
  // Auf Button klicken
 
@@ -59,6 +60,9 @@ buttons.forEach(button => {
     const city = button.textContent.trim();
     sunPositionContainer.style.display = "none";
     loadCityData(city);
+    citycontainer.scrollIntoView({
+      behavior: "smooth"
+    });
   });
 });
 
@@ -85,7 +89,6 @@ async function loadCityData(city) {
   cityName.textContent = city;
   updateCardStyle(cityData.timezone);
   updateSunPosition(results, cityData.timezone);
-  sunCity.textContent = city;
   currentTime.textContent =
     `Aktuell ist es in ${city} ${formatTime(new Date(), cityData.timezone)} Uhr`;
 
@@ -113,16 +116,22 @@ function updateSunPosition(results, timezone) {
 
   const cityDate = new Date(cityTime);
   const hour = cityDate.getHours();
+  console.log("Stadtzeit:", cityDate);
+    console.log("Stunde in Stadt:", hour);
 
   if (hour >= 7 && hour < 17) {
-    // Sonne anzeigen
-    sunPositionIcon.src = "Bilder/Sonne_dunkel.png";
-    sunPositionIcon.alt = "Sonne";
-  } else {
-    // Mond anzeigen
-    sunPositionIcon.src = "Bilder/Mond_dunkel.png";
-    sunPositionIcon.alt = "Mond";
-  }
+  sunPositionIcon.src = "Bilder/Sonne_dunkel.png";
+  sunPositionIcon.alt = "Sonne";
+
+  sunTitle.innerHTML = `Der aktuelle Sonnenstand in <span id="sun-city">${cityName.textContent}</span>`;
+} else {
+  sunPositionIcon.src = "Bilder/Mond_dunkel.png";
+  sunPositionIcon.alt = "Mond";
+
+  sunTitle.innerHTML = `Der aktuelle Mondstand in <span id="sun-city">${cityName.textContent}</span>`;
+}
+
+
 
   // feste Position auf dem Strahl
   movingSun.style.left = "75%";
