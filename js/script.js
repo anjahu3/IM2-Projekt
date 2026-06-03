@@ -53,6 +53,7 @@ const sunCity = document.getElementById("sun-city");
 const sunPositionIcon = document.getElementById("sun-position-icon");
 const sunTitle = document.getElementById("sun-title");
 
+
  // Auf Button klicken
 
 buttons.forEach(button => {
@@ -96,6 +97,13 @@ async function loadCityData(city) {
   sunriseTime.textContent = formatTime(results.sunrise, cityData.timezone);
   solarNoonTime.textContent = formatTime(results.solar_noon, cityData.timezone);
   sunsetTime.textContent = formatTime(results.sunset, cityData.timezone);
+  lineSunrise.textContent =
+  formatTime(results.sunrise, cityData.timezone);
+lineNoon.textContent =
+  formatTime(results.solar_noon, cityData.timezone);
+lineSunset.textContent =
+  formatTime(results.sunset, cityData.timezone);
+
   citycontainer.style.display = "block";
 }
 
@@ -107,7 +115,7 @@ function formatTime(time, timezone) {
   });
 }
 
-//Sonneenstand oder Monst anzeigen und Position der Sonne berechnen
+//Sonneenstand oder Mond anzeigen
 
 function updateSunPosition(results, timezone) {
   const cityTime = new Date().toLocaleString("en-US", {
@@ -115,21 +123,38 @@ function updateSunPosition(results, timezone) {
   });
 
   const cityDate = new Date(cityTime);
+
   const hour = cityDate.getHours();
-  console.log("Stadtzeit:", cityDate);
-    console.log("Stunde in Stadt:", hour);
+  const minutes = cityDate.getMinutes();
 
-  if (hour >= 7 && hour < 17) {
-  sunPositionIcon.src = "Bilder/Sonne_dunkel.png";
-  sunPositionIcon.alt = "Sonne";
+  const currentHour = hour + minutes / 60;
 
-  sunTitle.innerHTML = `Der aktuelle Sonnenstand in <span id="sun-city">${cityName.textContent}</span>`;
-} else {
-  sunPositionIcon.src = "Bilder/Mond_dunkel.png";
-  sunPositionIcon.alt = "Mond";
+  let percent;
 
-  sunTitle.innerHTML = `Der aktuelle Mondstand in <span id="sun-city">${cityName.textContent}</span>`;
-}
+  if (currentHour >= 6) {
+    percent = ((currentHour - 6) / 18) * 100;
+  } else {
+    percent = ((currentHour + 18) / 18) * 100;
+  }
+
+  const curveHeight = Math.sin((percent / 100) * Math.PI) * 50;
+
+  movingSun.style.left = `${percent}%`;
+  movingSun.style.top = `${10 - curveHeight}px`;
+
+  if (hour >= 6 && hour < 18) {
+    sunPositionIcon.src = "Bilder/Sonne_dunkel.png";
+    sunPositionIcon.alt = "Sonne";
+
+    sunTitle.innerHTML =
+      `Der aktuelle Sonnenstand in <span id="sun-city">${cityName.textContent}</span>`;
+  } else {
+    sunPositionIcon.src = "Bilder/Mond_dunkel.png";
+    sunPositionIcon.alt = "Mond";
+
+    sunTitle.innerHTML =
+      `Der aktuelle Mondstand in <span id="sun-city">${cityName.textContent}</span>`;
+  }
 
 
 

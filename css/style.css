@@ -50,7 +50,7 @@ margin-top: 170px;
 header {
 
   overflow: hidden;
-  min-height: 400;
+  min-height: 400px;
 }
 
 .world-map {
@@ -184,7 +184,7 @@ header {
 /* Der aktuelle Sonnenstand Text */
 
 #sun-position-container {
-    display:none
+    display:none;
 }
 
 .sun-position-text {
@@ -227,4 +227,22 @@ header {
   object-fit: contain;
 }
 
+/* Zeitangaben für Strahl */
+
+.sun-times-line {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.sun-times-line .time-point {
+  text-align: center;
+}
+
+.sun-times-line .time-point p {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
 
