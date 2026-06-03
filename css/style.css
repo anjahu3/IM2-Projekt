@@ -246,3 +246,6 @@ header {
   margin: 0;
 }
 
+.sun-times-line {
+  background-color: red !important;
+}
