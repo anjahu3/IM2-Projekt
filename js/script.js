@@ -54,6 +54,7 @@ const sunPositionIcon = document.getElementById("sun-position-icon");
 const sunTitle = document.getElementById("sun-title");
 
 
+
  // Auf Button klicken
 
 buttons.forEach(button => {
@@ -97,13 +98,6 @@ async function loadCityData(city) {
   sunriseTime.textContent = formatTime(results.sunrise, cityData.timezone);
   solarNoonTime.textContent = formatTime(results.solar_noon, cityData.timezone);
   sunsetTime.textContent = formatTime(results.sunset, cityData.timezone);
-  lineSunrise.textContent =
-  formatTime(results.sunrise, cityData.timezone);
-lineNoon.textContent =
-  formatTime(results.solar_noon, cityData.timezone);
-lineSunset.textContent =
-  formatTime(results.sunset, cityData.timezone);
-
   citycontainer.style.display = "block";
 }
 
@@ -115,7 +109,7 @@ function formatTime(time, timezone) {
   });
 }
 
-//Sonneenstand oder Mond anzeigen
+// Sonnenstand oder Mondstand anzeigen
 
 function updateSunPosition(results, timezone) {
   const cityTime = new Date().toLocaleString("en-US", {
@@ -123,24 +117,18 @@ function updateSunPosition(results, timezone) {
   });
 
   const cityDate = new Date(cityTime);
-
   const hour = cityDate.getHours();
   const minutes = cityDate.getMinutes();
 
   const currentHour = hour + minutes / 60;
 
-  let percent;
+  // 00:00 = 0%, 06:00 = 25%, 12:00 = 50%, 18:00 = 75%
+  const percent = (currentHour / 24) * 100;
 
-  if (currentHour >= 6) {
-    percent = ((currentHour - 6) / 18) * 100;
-  } else {
-    percent = ((currentHour + 18) / 18) * 100;
-  }
-
-  const curveHeight = Math.sin((percent / 100) * Math.PI) * 50;
+const curveHeight = Math.sin((percent / 100) * Math.PI) * 160;
 
   movingSun.style.left = `${percent}%`;
-  movingSun.style.top = `${10 - curveHeight}px`;
+  movingSun.style.top = `${220 - curveHeight}px`;
 
   if (hour >= 6 && hour < 18) {
     sunPositionIcon.src = "Bilder/Sonne_dunkel.png";
@@ -155,14 +143,7 @@ function updateSunPosition(results, timezone) {
     sunTitle.innerHTML =
       `Der aktuelle Mondstand in <span id="sun-city">${cityName.textContent}</span>`;
   }
-
-
-
-  // feste Position auf dem Strahl
-  movingSun.style.left = "75%";
-  movingSun.style.top = "-28px";
 }
-
 // Helle oder Dunkle City Card je nach Tageszeit
 //   07:00–16:59 = helle Karte
 //  17:00–06:59 = dunkle Karte

@@ -86,24 +86,35 @@
   </h2>
 
   <div class="sun-curve">
-    <div class="moving-sun" id="moving-sun">
-      <img id="sun-position-icon" src="Bilder/Mond_dunkel.png" alt="Mond">
-    </div>
+  <svg viewBox="0 0 1000 250" class="curve-svg">
+    <path
+      d="M 0 250 Q 500 0 1000 250"
+      fill="none"
+      stroke="black"
+      stroke-width="2"
+    />
+  </svg>
+  <div class="moving-sun" id="moving-sun">
+    <img id="sun-position-icon" src="Bilder/Sonne_dunkel.png" alt="Sonne">
   </div>
 
+</div>
   <div class="sun-times-line">
-    <div class="time-point"><p>06:00</p></div>
-    <div class="time-point"><p>12:00</p></div>
-    <div class="time-point"><p>18:00</p></div>
-    <div class="time-point"><p>00:00</p></div>
-  </div>
+  <div class="time-point"><p>00:00</p></div>
+  <div class="time-point"><p>06:00</p></div>
+  <div class="time-point"><p>12:00</p></div>
+  <div class="time-point"><p>18:00</p></div>
+  <div class="time-point"><p>24:00</p></div>
+</div>
 
 </section>
     </main>
 
 
     <footer>
-      <p>This is the footer of the page.</p>
+      <p>
+        &copy; 2024 Run with the Sun. Alle Rechte vorbehalten.
+      </p>
     </footer>
     <script src="js/script.js" type="module"></script>
   </body>
