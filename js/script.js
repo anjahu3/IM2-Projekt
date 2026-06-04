@@ -135,8 +135,8 @@ function updateSunPosition(results, timezone) {
     const point = path.getPointAtLength(total * percent);
 
     // Place the SVG image using SVG coordinates (viewBox units match path coords)
-    const imgW = parseFloat(sunSvgImage.getAttribute('width')) || 55;
-    const imgH = parseFloat(sunSvgImage.getAttribute('height')) || 55;
+    const imgW = 80; // Fixed width in SVG units
+    const imgH = 80; // Fixed height in SVG units
 
     sunSvgImage.setAttribute('x', point.x - imgW / 2);
     sunSvgImage.setAttribute('y', point.y - imgH / 2);
