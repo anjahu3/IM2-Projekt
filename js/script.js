@@ -51,6 +51,7 @@ const infoButton = document.querySelector(".info-button");
 const sunPositionContainer = document.getElementById("sun-position-container");
 const sunCity = document.getElementById("sun-city");
 const sunPositionIcon = document.getElementById("sun-position-icon");
+const sunSvgImage = document.getElementById("sun-svg-image");
 const sunTitle = document.getElementById("sun-title");
 
 
@@ -123,22 +124,77 @@ function updateSunPosition(results, timezone) {
   const currentHour = hour + minutes / 60;
 
   // 00:00 = 0%, 06:00 = 25%, 12:00 = 50%, 18:00 = 75%
-  const percent = (currentHour / 24) * 100;
+  const percent = currentHour / 24; // 0..1
 
-const curveHeight = Math.sin((percent / 100) * Math.PI) * 160;
+  // Try to position the sun using the actual SVG path so it always follows the curve
+  const svg = document.querySelector('.curve-svg');
+  const path = svg && svg.querySelector('path');
 
-  movingSun.style.left = `${percent}%`;
-  movingSun.style.top = `${220 - curveHeight}px`;
+  if (svg && path && typeof path.getTotalLength === 'function' && sunSvgImage) {
+    const total = path.getTotalLength();
+    const point = path.getPointAtLength(total * percent);
+
+    // Place the SVG image using SVG coordinates (viewBox units match path coords)
+    const imgW = parseFloat(sunSvgImage.getAttribute('width')) || 55;
+    const imgH = parseFloat(sunSvgImage.getAttribute('height')) || 55;
+
+    sunSvgImage.setAttribute('x', point.x - imgW / 2);
+    sunSvgImage.setAttribute('y', point.y - imgH / 2);
+  } else if (svg && path && movingSun) {
+    // Fallback: map SVG to container pixels and position the HTML element
+    const total = path.getTotalLength();
+    const point = path.getPointAtLength(total * percent);
+
+    const svgRect = svg.getBoundingClientRect();
+    const parent = document.querySelector('.sun-curve');
+    const parentRect = parent.getBoundingClientRect();
+
+    const viewBox = svg.viewBox.baseVal;
+    const vbX = viewBox.x || 0;
+    const vbY = viewBox.y || 0;
+    const vbW = viewBox.width || svgRect.width;
+    const vbH = viewBox.height || svgRect.height;
+
+    const scaleX = svgRect.width / vbW;
+    const scaleY = svgRect.height / vbH;
+
+    const leftPx = (point.x - vbX) * scaleX + svgRect.left - parentRect.left;
+    const topPx = (point.y - vbY) * scaleY + svgRect.top - parentRect.top;
+
+    const sunEl = movingSun;
+    const sunW = sunEl.offsetWidth || 55;
+    const sunH = sunEl.offsetHeight || 55;
+
+    sunEl.style.left = `${leftPx - sunW / 2}px`;
+    sunEl.style.top = `${topPx - sunH / 2}px`;
+  } else {
+    // Last-resort fallback: simple sine curve using percentages
+    if (movingSun) {
+      const curveHeight = Math.sin(percent * Math.PI) * 160;
+      movingSun.style.left = `${percent * 100}%`;
+      movingSun.style.top = `${220 - curveHeight}px`;
+    }
+  }
 
   if (hour >= 6 && hour < 18) {
-    sunPositionIcon.src = "Bilder/Sonne_dunkel.png";
-    sunPositionIcon.alt = "Sonne";
+    if (sunSvgImage) {
+      sunSvgImage.setAttribute('href', 'Bilder/Sonne_dunkel.png');
+      sunSvgImage.setAttribute('aria-label', 'Sonne');
+    } else if (sunPositionIcon) {
+      sunPositionIcon.src = "Bilder/Sonne_dunkel.png";
+      sunPositionIcon.alt = "Sonne";
+    }
 
     sunTitle.innerHTML =
       `Der aktuelle Sonnenstand in <span id="sun-city">${cityName.textContent}</span>`;
   } else {
-    sunPositionIcon.src = "Bilder/Mond_dunkel.png";
-    sunPositionIcon.alt = "Mond";
+    if (sunSvgImage) {
+      sunSvgImage.setAttribute('href', 'Bilder/Mond_dunkel_2.png');
+      sunSvgImage.setAttribute('aria-label', 'Mond');
+    } else if (sunPositionIcon) {
+      sunPositionIcon.src = "Bilder/Mond_dunkel_2.png";
+      sunPositionIcon.alt = "Mond";
+    }
 
     sunTitle.innerHTML =
       `Der aktuelle Mondstand in <span id="sun-city">${cityName.textContent}</span>`;

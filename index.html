@@ -85,27 +85,28 @@
     Der aktuelle Sonnenstand in <span id="sun-city">New York</span>
   </h2>
 
-  <div class="sun-curve">
-  <svg viewBox="0 0 1000 250" class="curve-svg">
-    <path
-      d="M 0 250 Q 500 0 1000 250"
-      fill="none"
-      stroke="black"
-      stroke-width="2"
-    />
-  </svg>
-  <div class="moving-sun" id="moving-sun">
-    <img id="sun-position-icon" src="Bilder/Sonne_dunkel.png" alt="Sonne">
+  <div class="sun-wrapper">
+    <div class="sun-curve">
+      <svg viewBox="0 0 1000 250" class="curve-svg" preserveAspectRatio="none">
+        <path
+          d="M 0 250 Q 500 0 1000 250"
+          fill="none"
+          stroke="black"
+          stroke-width="2"
+        />
+        <!-- Sun marker as an SVG image so it shares the same coordinate system as the path -->
+        <image id="sun-svg-image" href="Bilder/Sonne_dunkel.png" x="0" y="0" width="55" height="55" preserveAspectRatio="xMidYMid meet" />
+      </svg>
+    </div>
   </div>
 
-</div>
   <div class="sun-times-line">
-  <div class="time-point"><p>00:00</p></div>
-  <div class="time-point"><p>06:00</p></div>
-  <div class="time-point"><p>12:00</p></div>
-  <div class="time-point"><p>18:00</p></div>
-  <div class="time-point"><p>24:00</p></div>
-</div>
+    <div class="time-point"><p>00:00</p></div>
+    <div class="time-point"><p>06:00</p></div>
+    <div class="time-point"><p>12:00</p></div>
+    <div class="time-point"><p>18:00</p></div>
+    <div class="time-point"><p>24:00</p></div>
+  </div>
 
 </section>
     </main>
@@ -113,7 +114,7 @@
 
     <footer>
       <p>
-        &copy; 2024 Run with the Sun. Alle Rechte vorbehalten.
+        &copy; 2026 Run with the Sun.
       </p>
     </footer>
     <script src="js/script.js" type="module"></script>
