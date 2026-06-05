@@ -48,7 +48,6 @@ margin-top: 170px;
 /* Weltkarte im Hintergrund */
 
 header {
-
   overflow: hidden;
   min-height: 400px;
 }
@@ -58,54 +57,45 @@ header {
   top: -110px;
   left: 50%;
   transform: translateX(-50%);
-
   width: clamp(600px, 90vw, 1100px);
   opacity: 0.12;
-
   z-index: 0;
   pointer-events: none;
 }
 
 /* Städte Buttons */
 .city-buttons {
-    border:none;
     display:grid;
     grid-template-columns:repeat(3, 1fr);
     gap: 14px 18px;
     margin-bottom:28px;
-    padding: 8px 10px;
     font-size: 14px;
     justify-content: center;
+    padding: 10px 100px;
 }
 
 .city-buttons button {
    border: 1px solid black;
    border-radius: 999px;
-   padding: 8px 16px;
+   padding: 10px 16px;
    background-color: #F0DDCA;
 }
+
+/*Buttons für Mobile*/
+@media (max-width: 600px) {
+  .city-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px 20px;
+  }
 
 /* Städte Card */
 .city-card {
   width: calc(100% - 32px);
-    max-width: 500px;
-  
+  max-width: 500px;
   margin: 0 auto 90px;
   border-radius: 24px;
   padding: 24px;
   transition: 0.4s ease;
-}
-
-/* Städte Card Mobile */
-
-@media (max-width: 600px) {
-
-  .city-card {
-    width: calc(100% - 60px);
-    max-width: 320px;
-    padding: 16px;
-  }
-
 }
 
 #city-container {
@@ -151,6 +141,16 @@ header {
   gap: 18px;
 }
 
+#sunrise-icon {
+  width: 50px;
+  height: 70px;
+} 
+
+#sunset-icon {
+  width: 50px;
+  height: 70px;
+}
+
 /* Icons */
 .data-row img {
   width: 50px;
@@ -194,9 +194,14 @@ header {
 }
 
 /* City Card Mobile Schriften */
+  @media (max-width: 600px) {
 
-@media (max-width: 600px) {
-
+  .city-card {
+    width: calc(100% - 60px);
+    max-width: 320px;
+    padding: 16px;
+  }
+}
   .city-card h2 {
     font-size: 26px;
   }
@@ -212,6 +217,16 @@ header {
   .data-row img {
     width: 36px;
     height: 36px;
+  }
+
+  #sunrise-icon {
+    width: 36px;
+    height: 50px;
+  }
+
+  #sunset-icon {
+    width: 36px;
+    height: 50px;
   }
 
   .info-button {
@@ -328,4 +343,12 @@ header {
   .sun-times-line .time-point p {
     font-size: 12px;
   }
+}
+
+/*Footer*/
+footer {
+  text-align: left;
+  padding: 30px;
+  font-size: 14px;
+  color: #333;
 }

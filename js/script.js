@@ -37,13 +37,11 @@ const cities = {
  // Html Elemente holen
 
 const buttons = document.querySelectorAll(".city-buttons button");
-
 const cityName = document.getElementById("city-name");
 const currentTime = document.getElementById("current-time");
 const sunriseTime = document.getElementById("sunrise-time");
 const solarNoonTime = document.getElementById("solar-noon-time");
 const sunsetTime = document.getElementById("sunset-time");
-
 const card = document.querySelector(".city-card");
 const movingSun = document.getElementById("moving-sun");
 const citycontainer = document.getElementById("city-container");
@@ -95,7 +93,6 @@ async function loadCityData(city) {
   currentTime.textContent =
     `Aktuell ist es in ${city} ${formatTime(new Date(), cityData.timezone)} Uhr`;
 
-
   sunriseTime.textContent = formatTime(results.sunrise, cityData.timezone);
   solarNoonTime.textContent = formatTime(results.solar_noon, cityData.timezone);
   sunsetTime.textContent = formatTime(results.sunset, cityData.timezone);
@@ -126,7 +123,7 @@ function updateSunPosition(results, timezone) {
   // 00:00 = 0%, 06:00 = 25%, 12:00 = 50%, 18:00 = 75%
   const percent = currentHour / 24; // 0..1
 
-  // Try to position the sun using the actual SVG path so it always follows the curve
+  // Symbol (Mond oder Sonne) auf der Kurve positionieren
   const svg = document.querySelector('.curve-svg');
   const path = svg && svg.querySelector('path');
 
@@ -134,14 +131,14 @@ function updateSunPosition(results, timezone) {
     const total = path.getTotalLength();
     const point = path.getPointAtLength(total * percent);
 
-    // Place the SVG image using SVG coordinates (viewBox units match path coords)
+    // Bildgröße in SVG-Einheiten
     const imgW = 80; // Fixed width in SVG units
     const imgH = 80; // Fixed height in SVG units
 
     sunSvgImage.setAttribute('x', point.x - imgW / 2);
     sunSvgImage.setAttribute('y', point.y - imgH / 2);
   } else if (svg && path && movingSun) {
-    // Fallback: map SVG to container pixels and position the HTML element
+    // Fallback: Positionierung in Pixeln, wenn SVG-Image nicht funktioniert
     const total = path.getTotalLength();
     const point = path.getPointAtLength(total * percent);
 
@@ -167,14 +164,16 @@ function updateSunPosition(results, timezone) {
 
     sunEl.style.left = `${leftPx - sunW / 2}px`;
     sunEl.style.top = `${topPx - sunH / 2}px`;
+
   } else {
-    // Last-resort fallback: simple sine curve using percentages
+    // Kurve
     if (movingSun) {
       const curveHeight = Math.sin(percent * Math.PI) * 160;
       movingSun.style.left = `${percent * 100}%`;
       movingSun.style.top = `${220 - curveHeight}px`;
     }
   }
+  // Je nach Tageszeit Sonne oder Mond anzeigen
 
   if (hour >= 6 && hour < 18) {
     if (sunSvgImage) {
