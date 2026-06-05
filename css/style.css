@@ -81,12 +81,7 @@ header {
    background-color: #F0DDCA;
 }
 
-/*Buttons für Mobile*/
-@media (max-width: 600px) {
-  .city-buttons {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 10px 20px;
-  }
+
 
 /* Städte Card */
 .city-card {
@@ -98,6 +93,18 @@ header {
   transition: 0.4s ease;
 }
 
+
+/* Städte Card Mobile */
+
+@media (max-width: 600px) {
+
+  .city-card {
+    width: calc(100% - 60px);
+    max-width: 320px;
+    padding: 16px;
+  }
+
+}
 #city-container {
     display: none;
 }
@@ -194,14 +201,14 @@ header {
 }
 
 /* City Card Mobile Schriften */
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
 
   .city-card {
     width: calc(100% - 60px);
     max-width: 320px;
     padding: 16px;
   }
-}
+
   .city-card h2 {
     font-size: 26px;
   }
@@ -233,7 +240,9 @@ header {
     font-size: 14px;
     padding: 8px 14px;
   }
+
 }
+
 
 /* Der aktuelle Sonnenstand Text */
 
