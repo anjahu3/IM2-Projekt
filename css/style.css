@@ -177,17 +177,14 @@ header {
 
 /* Info Button */
 .info-button {
-	
+  display: block;
   margin-left: auto;
   margin-top: 15px;
-
   border: none;
   border-radius: 900px;
   padding: 10px 18px;
-
   font-size: 16px;
   cursor: pointer;
-  display: block;
 }
 
 /* Dunkler Info-Button */
@@ -212,6 +209,7 @@ header {
   }
 
   .city-card h2 {
+    overflow: hidden; /* contain floated children like .info-button */
     font-size: 26px;
   }
 
