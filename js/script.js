@@ -138,6 +138,7 @@ function updateSunPosition(results, timezone) {
     sunSvgImage.setAttribute('x', point.x - imgW / 2);
     sunSvgImage.setAttribute('y', point.y - imgH / 2);
   } else if (svg && path && movingSun) {
+    
     // Fallback: Positionierung in Pixeln, wenn SVG-Image nicht funktioniert
     const total = path.getTotalLength();
     const point = path.getPointAtLength(total * percent);
