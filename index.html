@@ -5,116 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Run with the Sun</title>
     <link rel="stylesheet" href="css/style.css" />
-
   </head>
 
   <body>
     <header>
- 
-     <!-- Lottie-Animation-->
-      
-  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.14/dist/dotlottie-wc.js" type="module"></script>
-     <div class="lottie-container">
-    <dotlottie-wc src="./Animation Start.json" autoplay loop></dotlottie-wc>
-    </div>
+      <!-- Lottie-Animation-->
 
-  <!-- Weltkarte Hintergrund -->
-  <img
-    src="Bilder/Weltkarte2.png"
-    alt=""
-    class="world-map"
-  >
+      <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.14/dist/dotlottie-wc.js" type="module"></script>
+      <div class="lottie-container">
+        <dotlottie-wc src="./Animation Start.json" autoplay loop></dotlottie-wc>
+      </div>
 
-    <h1>
-    Run with
-    <br>
-    the Sun
-    </h1>
+      <!-- Weltkarte Hintergrund -->
+      <img src="Bilder/Weltkarte2.png" alt="" class="world-map" />
 
+      <h1>
+        Run with
+        <br />
+        the Sun
+      </h1>
     </header>
 
     <main>
       <p class="intro">
-        Klicke auf eine Stadt und entdecke ihren 
-       <br> Sonnenaufgang und Sonnenuntergang.</p>
-        <section class="city-buttons">
-          <button>New York</button>
-          <button>Tokio</button>
-          <button>Kapstadt</button>
-          <button>Zürich</button>
-          <button>Reykjavík</button>
-          <button>Dubai</button>
-        </section>
+        Klicke auf eine Stadt und entdecke ihren
+        <br />
+        Sonnenaufgang und Sonnenuntergang.
+      </p>
+      <section class="city-buttons">
+        <button>New York</button>
+        <button>Tokio</button>
+        <button>Kapstadt</button>
+        <button>Zürich</button>
+        <button>Reykjavík</button>
+        <button>Dubai</button>
+      </section>
 
-<!-- Städte Card-->
+      <!-- Städte Card-->
 
-  <section class="city-card day-card" id="city-container">
-      <h2 id="city-name">New York</h2>
-      <p id="current-time">Aktuell ist es in New York 23:00 Uhr</p>
+      <section class="city-card day-card" id="city-container">
+        <h2 id="city-name">New York</h2>
+        <p id="current-time">Aktuell ist es in New York 23:00 Uhr</p>
 
         <div class="sun-data">
-        <div class="data-row">
-         <img id="sunrise-icon" src="Bilder/Sonnenaufgang_dunkel.png" alt="Sonnenaufgang">
-          <span> Sunrise</span>
-          <span id="sunrise-time"> 7:00 AM</span>
+          <div class="data-row">
+            <img id="sunrise-icon" src="Bilder/Sonnenaufgang_dunkel.png" alt="Sonnenaufgang" />
+            <span> Sunrise</span>
+            <span id="sunrise-time"> 7:00 AM</span>
+          </div>
         </div>
-        
-      <div class="data-row">
-       <img id="solarnoon-icon" src="Bilder/Sonne_dunkel.png" alt="Sonne">
-        <span> Solar Noon</span>
-        <span id="solar-noon-time"> 12:00 AM </span>
-      </div>
 
-      <div class="data-row">
-<img id="sunset-icon" src="Bilder/Sonnenuntergang_dunkel.png" alt="Sonnenuntergang">
-        <span> Sunset</span>
-        <span id="sunset-time"> 7:00 PM </span>
-      </div>
+        <div class="data-row">
+          <img id="solarnoon-icon" src="Bilder/Sonne_dunkel.png" alt="Sonne" />
+          <span> Solar Noon</span>
+          <span id="solar-noon-time"> 12:00 AM </span>
+        </div>
 
-<!-- Info Button auf City Card-->
-    <button class="info-button"> weitere Infos</button>
-    </section>
+        <div class="data-row">
+          <img id="sunset-icon" src="Bilder/Sonnenuntergang_dunkel.png" alt="Sonnenuntergang" />
+          <span> Sunset</span>
+          <span id="sunset-time"> 7:00 PM </span>
+        </div>
 
+        <!-- Info Button auf City Card-->
+        <button class="info-button">weitere Infos</button>
+      </section>
 
-<!-- Zweiter Teil mit Sonnenstrahl-->
+      <!-- Zweiter Teil mit Sonnenstrahl-->
 
-<section class="sun-position-text" id="sun-position-container">
+      <section class="sun-position-text" id="sun-position-container">
+        <h2 id="sun-title">Der aktuelle Sonnenstand in <span id="sun-city">New York</span></h2>
 
-  <h2 id="sun-title">
-    Der aktuelle Sonnenstand in <span id="sun-city">New York</span>
-  </h2>
+        <div class="sun-wrapper">
+          <div class="sun-curve">
+            <svg viewBox="0 0 2000 250" class="curve-svg" preserveAspectRatio="xMidYMid meet">
+              <path d="M 0 250 Q 1000 0 2000 250" fill="none" stroke="black" stroke-width="3" />
+              <!-- Sonnenstrahl -->
+              <image id="sun-svg-image" href="Bilder/Sonne_dunkel.png" x="0" y="0" width="80" height="80" />
+            </svg>
+          </div>
+        </div>
 
-  <div class="sun-wrapper">
-    <div class="sun-curve">
-      <svg viewBox="0 0 2000 250" class="curve-svg" preserveAspectRatio="xMidYMid meet">
-        <path
-          d="M 0 250 Q 1000 0 2000 250"
-          fill="none"
-          stroke="black"
-          stroke-width="3"
-        />
-        <!-- Sonnenstrahl -->
-        <image id="sun-svg-image" href="Bilder/Sonne_dunkel.png" x="0" y="0" width="80" height="80" />
-      </svg>
-    </div>
-  </div>
-
-  <div class="sun-times-line">
-    <div class="time-point"><p>00:00</p></div>
-    <div class="time-point"><p>06:00</p></div>
-    <div class="time-point"><p>12:00</p></div>
-    <div class="time-point"><p>18:00</p></div>
-    <div class="time-point"><p>24:00</p></div>
-  </div>
-
-</section>
+        <div class="sun-times-line">
+          <div class="time-point"><p>00:00</p></div>
+          <div class="time-point"><p>06:00</p></div>
+          <div class="time-point"><p>12:00</p></div>
+          <div class="time-point"><p>18:00</p></div>
+          <div class="time-point"><p>24:00</p></div>
+        </div>
+      </section>
     </main>
 
-
     <footer>
-      <p>
-        &copy; 2026 Run with the Sun.
-      </p>
+      <p>&copy; 2026 Run with the Sun.</p>
     </footer>
     <script src="js/script.js" type="module"></script>
   </body>
