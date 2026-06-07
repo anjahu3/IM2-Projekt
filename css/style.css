@@ -177,7 +177,7 @@ header {
 
 /* Info Button */
 .info-button {
-  display: block;
+	
   margin-left: auto;
   margin-top: 15px;
 
@@ -187,6 +187,7 @@ header {
 
   font-size: 16px;
   cursor: pointer;
+  display: block;
 }
 
 /* Dunkler Info-Button */
