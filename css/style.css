@@ -177,6 +177,7 @@ header {
 
 /* Info Button */
 .info-button {
+  display: block;
   margin-left: auto;
   margin-top: 15px;
 
@@ -242,7 +243,6 @@ header {
   }
 
 }
-
 
 /* Der aktuelle Sonnenstand Text */
 
